@@ -125,13 +125,11 @@ module "nlb" {
       target_type          = "ip"
       deregistration_delay = 10
       health_check = {
-        enabled             = true
-        interval            = 30
-        path                = "/healthz"
-        port                = "traffic-port"
-        healthy_threshold   = 3
-        unhealthy_threshold = 3
-        timeout             = 6
+            protocol = "TCP"
+            port = 10800
+            healthy_threshold = 2
+            unhealthy_threshold = 2
+            interval = 10
       }
     },
     {
